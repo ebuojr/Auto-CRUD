@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Auto.App.CRUD.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Car Register</h4>
+<hr/>
+
+<p>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marke)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Km)
+            </th>
+            <th>
+                <a asp-action="AddorEdit" class="btn btn-outline-success"><i class="far"></i>New Car</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marke)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Km)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.CarId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarId" onclick="return confirm('Are you sure to delete?')" >Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
